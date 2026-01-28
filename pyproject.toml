@@ -1,0 +1,9 @@
+[project]
+name = "skill-icp"
+version = "0.1.0"
+description = "ICP learning content and tools"
+requires-python = ">=3.11"
+dependencies = ["beautifulsoup4>=4.12", "markdownify>=0.13"]
+
+[dependency-groups]
+dev = []
