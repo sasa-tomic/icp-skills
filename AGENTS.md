@@ -5,13 +5,16 @@ This repo develops AI coding assistant skills for ICP development.
 ## Repository Structure
 
 ```
-skills/                    # The skills (source of truth)
+skills/                    # Source skills (edit these)
   icp-backend-motoko/      # Motoko development skill
     SKILL.md               # Main skill file (required)
     patterns.md            # Data structures, HTTP, etc.
     style.md               # Code style guide
     testing.md             # Testing patterns
     advanced.md            # Advanced topics
+dist/                      # Built single-file distributions (generated)
+  icp-backend-motoko.md    # Single file per skill (install to any agent)
+  icp-all.md               # All skills combined (when multiple exist)
 .cursor/skills/            # Symlink to skills/ for local dev
 portal/                    # Source docs from ICP portal
 learn-md/                  # Converted learning articles
@@ -53,20 +56,20 @@ Additional `.md` files in the skill folder are included automatically.
 
 | Script | Purpose |
 |--------|---------|
+| `build.py` | Build single-file distributions in `dist/` |
 | `fetch_learn.py` | Fetch learn.internetcomputer.org and convert to Markdown |
-| `install.sh` | Install skills to Cursor, Copilot, or other agents |
 
 ## Usage
 
 ```bash
+# After editing skills, rebuild dist/
+uv run build.py
+
 # Fetch and convert source docs (incremental)
 uv run fetch_learn.py
 
 # Force re-fetch and re-convert all
 uv run fetch_learn.py --force
-
-# Test install script
-./install.sh --list
 ```
 
 ## Source Material
